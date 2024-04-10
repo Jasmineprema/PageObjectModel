@@ -1,0 +1,33 @@
+package PageObjects;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ManageClassPage {
+	
+	@FindBy(id="addClassName")
+	public static WebElement addClassName;
+	
+	@FindBy(id="addClassOrder")
+	public static WebElement addClassOrder;
+	
+	@FindBy(xpath="//span[text()='Section']")
+	public static WebElement addSection;
+	
+	@FindBy(id="addClassTotalMark")
+	public static WebElement addTotalMark;
+	
+	@FindBy(id="createClass")
+	public static WebElement addBtnClk;
+	
+	@FindBy(xpath="/html/body/app-root/app-pages/div/app-classes/div[1]/div/div/section/div/div/table/tbody/tr[1]/td[4]/span[2]/a")
+	public static WebElement delectBtn;
+	
+	@FindBy(id="confirmDeleteClass")
+	public static WebElement clkOkBtn;
+	
+	@FindBy(xpath="//h5[text()='Add Class']")
+	public static WebElement actualMsg;
+	
+
+}

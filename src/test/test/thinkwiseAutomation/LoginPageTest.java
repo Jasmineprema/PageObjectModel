@@ -1,9 +1,10 @@
 package thinkwiseAutomation;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.File;
 import java.io.IOException;
 import org.apache.commons.io.FileUtils;
-import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -162,26 +163,39 @@ public class LoginPageTest extends CommonFunctions {
 		classTest.info("Add class valid data entering");
 		classTest.pass("ADD CLASS IS PASSED");
 		Thread.sleep(2000);
-		WebElement actual = driver.findElement(By.xpath("//label[text()=' Class Added Successfully']"));
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		File src = screenshot.getScreenshotAs(OutputType.FILE);
+		File dest = new File("C:\\Users\\Jasmine\\eclipse-workspace\\PageObjectModel\\Snaps\\classimg.png");
+		FileUtils.copyFile(src, dest);
+
+		classTest.addScreenCaptureFromPath("Snaps\\classimg.png");
+		
 		try {
-			SoftAssert assert1 = new SoftAssert();
-			assert1.assertEquals(actual, " Class Added Successfully");
+			//Assert Validation
+			WebElement successMsgElement = driver.findElement(By.xpath("/html/body/app-root/app-pages/div/app-classes/div[1]/div/div/app-display-success/div/ul/li[2]/label"));
+			String actualMsg = successMsgElement.getText();
+			System.out.println(actualMsg);
+			String expectedMsg = "Success! Class Added Successfully";
+			
+			assertEquals(actualMsg, expectedMsg);
+			}catch (Exception e) {
 
-			TakesScreenshot screenshot = (TakesScreenshot) driver;
-			File src = screenshot.getScreenshotAs(OutputType.FILE);
-			File dest = new File("C:\\Users\\Jasmine\\eclipse-workspace\\PageObjectModel\\Snaps\\classimg.png");
-			FileUtils.copyFile(src, dest);
-
-			classTest.addScreenCaptureFromPath("Snaps\\classimg.png");
-			System.out.println("Successfully Added");
-
-		} catch (Exception e) {
-
-			classTest.pass("Class added successfully" + e.getMessage());
-
-		}
-
+				System.out.println("Doesn't match Actual and Expected Msgs");
+				e.printStackTrace();
+			}
 		extent.flush();
+//		WebElement actual = driver.findElement(By.xpath("//label[text()=' Class Added Successfully']"));
+//		try {
+//			SoftAssert assert1 = new SoftAssert();
+//			assert1.assertEquals(actual, " Class Added Successfully");
+//			System.out.println("Successfully Added");
+//
+//		} catch (Exception e) {
+//
+//			classTest.fail("Class added successfully" + e.getMessage());
+//		}
+
+		
 	}
 
 	public static void verifySectionPage() throws InterruptedException, IOException {

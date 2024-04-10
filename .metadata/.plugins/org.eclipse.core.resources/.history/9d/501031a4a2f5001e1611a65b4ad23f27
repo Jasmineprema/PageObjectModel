@@ -1,0 +1,23 @@
+package PageObjects;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class ExamsPageObjects {
+	
+	
+	@FindBy(xpath = "//a[text()='Exams']")
+	public static WebElement clkExams;
+	
+	@FindBy(id = "cshowAddExam")
+	public static WebElement clkExamsplusBtn;
+	
+	@FindBy(id="Midterm")
+	public static WebElement examName;
+
+	@FindBy(id="eaddOrderId")
+	public static WebElement orderId50;
+	
+	@FindBy(xpath = "//a[text()='Exams']")
+	public static WebElement clkExams;
+}

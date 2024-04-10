@@ -1,0 +1,199 @@
+package com.common;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.json.simple.parser.JSONParser;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import PageObjects.LoginPage;
+
+public class CommonFunctions {
+
+	public static WebDriver driver;
+	public static Properties properties;
+	public static FileInputStream fileInputStream;
+
+	public static Properties loadPropertyFile() throws IOException {
+
+		fileInputStream = new FileInputStream("config.properties");
+		properties = new Properties();
+		properties.load(fileInputStream);
+
+		return properties;
+	}
+
+	@BeforeMethod
+	public static void launchBrowser() throws InterruptedException, IOException {
+
+		loadPropertyFile();
+
+		String browser = properties.getProperty("browser");
+
+		String url = properties.getProperty("url");
+
+		if (browser.equalsIgnoreCase("Chrome")) {
+
+			driver = new ChromeDriver();
+
+		} else if (browser.equalsIgnoreCase("firefox")) {
+
+			driver = new FirefoxDriver();
+		}
+
+		driver.get(url);
+
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//		WebElement clkAdmin = driver.findElement(By.xpath("//strong[text()='Admin']"));
+//		clkAdmin.click();
+	}
+	
+	
+	
+	public static void withoutUserName() throws InterruptedException, IOException {
+
+		
+//		Thread.sleep(5000);
+//		WebElement loginEmail = driver.findElement(By.id("login-email"));
+//		loginEmail.sendKeys("");
+//		Thread.sleep(4000);
+//		WebElement loginPassword = driver.findElement(By.id("login-password"));
+//		loginPassword.sendKeys("Qwerty@123");
+//		Thread.sleep(4000);
+//		WebElement loginBtn = driver.findElement(By.id("btnLogin"));
+//		loginBtn.click();
+		
+		//Assert validation
+//		WebElement emailRequired = driver.findElement(By.xpath("//div[text()='Email is required.']"));
+//		String emailMsg = emailRequired.getText();
+//		System.out.println("Email Required Msg: " + emailMsg);
+//		Assert.assertEquals(emailMsg, "Email is required.");
+//		
+//		driver.quit();
+//		
+	}
+//
+//	@Test(priority = 2)
+//	public static void WithoutPassword() throws InterruptedException, IOException {
+//
+//		launchBrowser();
+//		Thread.sleep(4000);
+//		WebElement loginEmail = driver.findElement(By.id("login-email"));
+//		loginEmail.sendKeys("rnarayanan@thapovan-inc.com");
+//		Thread.sleep(3000);
+//		WebElement loginPassword = driver.findElement(By.id("login-password"));
+//		loginPassword.sendKeys("");
+//		Thread.sleep(4000);
+//		WebElement loginBtn = driver.findElement(By.id("btnLogin"));
+//		loginBtn.click();
+//		
+//		//Assert validation
+//		WebElement passwordRequired = driver.findElement(By.xpath("//*[@id=\"login-page\"]/div/div[1]/div/div/div[2]/div/div/form/div[2]/div"));
+//		String passwordMsg = passwordRequired.getText();
+//		System.out.println("PasswordRequired: " + passwordMsg);
+//		Assert.assertEquals(passwordMsg, "Password is required.");
+//
+//		driver.quit();
+//	}
+//
+//	@Test(priority = 3)
+//	public static void invalidUserEntry() throws InterruptedException, IOException {
+//
+//		launchBrowser();
+//		Thread.sleep(2000);
+//		WebElement loginEmail = driver.findElement(By.id("login-email"));
+//		loginEmail.sendKeys("rnarayanann@thapovan-inc.com");
+//		Thread.sleep(2000);
+//		WebElement loginPassword = driver.findElement(By.id("login-password"));
+//		loginPassword.sendKeys("Qwerty@123");
+//		Thread.sleep(2000);
+//		WebElement loginBtn = driver.findElement(By.id("btnLogin"));
+//		loginBtn.click();//
+//		
+//		//Assert validation
+//		WebElement invalidUser = driver.findElement(By.xpath("/html/body/app-root/app-pages/div/app-login/div/div/div[1]/div/div/div[2]/div/div/app-display-failure/div/ul/li[2]/label"));
+//        String invalidMsg = invalidUser.getText();
+//        System.out.println("Invalid User Entry: " +invalidMsg);
+//        
+//		Assert.assertEquals(invalidMsg, "Oops! Invalid User");
+//		driver.quit();
+//		
+//		
+//	}
+//
+//	@Test(priority = 4)
+//	public static void failedLoginAttempts() throws InterruptedException, IOException {
+//
+//		launchBrowser();
+//		Thread.sleep(2000);
+//		WebElement loginEmail = driver.findElement(By.id("login-email"));
+//		loginEmail.sendKeys("rnarayanan@thapovan-inc.com");
+//		Thread.sleep(2000);
+//		WebElement loginPassword = driver.findElement(By.id("login-password"));
+//		loginPassword.sendKeys("Qwerty@12");
+//		Thread.sleep(2000);
+//		WebElement loginBtn = driver.findElement(By.id("btnLogin"));
+//		loginBtn.click();
+//		
+//		//Assert validation
+//		WebElement failedLogin = driver.findElement(By.xpath("/html/body/app-root/app-pages/div/app-login/div/div/div[1]/div/div/div[2]/div/div/app-display-failure/div/ul/li[2]/label"));
+//		String failedLoginat = failedLogin.getText();
+//		System.out.println("FailedLoginMsg: " + failedLoginat);
+//		Assert.assertEquals(failedLoginat, "Oops! Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.");
+//
+//		driver.quit();
+//	}
+//    @Test(priority = 5)
+//	public static void successfulLogin() throws InterruptedException, IOException {
+//
+//    	launchBrowser();
+//		Thread.sleep(2000);
+//		WebElement loginEmail = driver.findElement(By.id("login-email"));
+//		loginEmail.sendKeys("rnarayanan@thapovan-inc.com");
+//		Thread.sleep(2000);
+//		WebElement loginPassword = driver.findElement(By.id("login-password"));
+//		loginPassword.sendKeys("Qwerty@123");
+//		Thread.sleep(2000);
+//		WebElement loginBtn = driver.findElement(By.id("btnLogin"));
+//		loginBtn.click();
+//		driver.quit();
+//	}
+
+//	public static void validDatas() {
+//
+//		String className = properties.getProperty("className");
+//
+//		String orderId = properties.getProperty("orderId");
+//
+//		String sectionName = properties.getProperty("section");
+//
+//		String totalMarkEntry = properties.getProperty("totalMark");
+//
+//	}
+
+	@AfterSuite
+	public void closeBrowser() {
+
+		driver.quit();
+
+	}
+
+}
