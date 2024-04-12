@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 GitRepositoriesView.GitDirectories=D\:\\New project\\PageObjectModel\\.git;
 GitRepositoriesView.GitDirectories.relative=D\:\\New project\\PageObjectModel\\.git;
+=======
+GitRepositoriesView.GitDirectories=C\:\\clone\\PageObjectModel\\.git;
+GitRepositoriesView.GitDirectories.relative=C\:\\clone\\PageObjectModel\\.git;
+>>>>>>> 8d12ec61356600e099ba7ac97ed23f1fe3d79166
 eclipse.preferences.version=1

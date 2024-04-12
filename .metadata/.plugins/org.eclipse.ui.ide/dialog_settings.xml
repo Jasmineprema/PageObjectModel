@@ -7,7 +7,11 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+<<<<<<< HEAD
 			<item value="C:\clone\PageObjectModel"/>
+=======
+			<item value="D:\New project\PageObjectModel"/>
+>>>>>>> 8d12ec61356600e099ba7ac97ed23f1fe3d79166
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
@@ -19,6 +23,10 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+<<<<<<< HEAD
+=======
+			<item value="C:\clone\PageObjectModel"/>
+>>>>>>> 8d12ec61356600e099ba7ac97ed23f1fe3d79166
 			<item value="D:\New project\PageObjectModel"/>
 		</list>
 	</section>

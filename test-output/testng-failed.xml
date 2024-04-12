@@ -3,6 +3,7 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
+<<<<<<< HEAD
       <class name="thinkwiseAutomation.LoginPageTest">
         <methods>
           <include name="closeBrowser"/>
@@ -11,6 +12,13 @@
           <include name="verifySubjectPage"/>
         </methods>
       </class> <!-- thinkwiseAutomation.LoginPageTest -->
+=======
+      <class name="thinkwiseAutomation.AssertValidation">
+        <methods>
+          <include name="validation"/>
+        </methods>
+      </class> <!-- thinkwiseAutomation.AssertValidation -->
+>>>>>>> 8d12ec61356600e099ba7ac97ed23f1fe3d79166
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

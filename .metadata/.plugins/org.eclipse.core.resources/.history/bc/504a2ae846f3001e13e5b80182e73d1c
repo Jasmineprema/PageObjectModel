@@ -1,0 +1,15 @@
+package PageObjects;
+
+public class addClassStudentInfo {
+
+	public static String classField = "(//span[text()='Class Name is required'])[1]";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

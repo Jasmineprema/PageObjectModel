@@ -1,0 +1,49 @@
+package PageObjects;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class SubjectPageObjects {
+
+	@FindBy(id="subject")
+	public static WebElement clkSubject;
+	
+	@FindBy(id="showAddSubjectInSec")
+	public static WebElement clkAddSubjectInSec;
+	
+	@FindBy(id="addSubjectName")
+	public static WebElement fillSubName;
+	
+	@FindBy(id="addSubjectOrder")
+	public static WebElement fillSubOrder;
+	
+	@FindBy(xpath="//span[@class='ss-arrow']")
+	public static WebElement clkClasses;
+	
+	@FindBy(xpath="//div[text()='123B ']")
+	public static WebElement clkSection;
+	
+	@FindBy(xpath="//span[@class='ss-plus']")
+	public static WebElement clkSectionBtn;
+	
+	@FindBy(xpath="/html/body/app-root/app-pages/div/app-subject/div[2]/div/div/div[2]/ul/div/div/div/div[2]/li/div/div[2]/div[2]")
+	public static WebElement enterSection;
+	
+	@FindBy(id="createSubject")
+	public static WebElement clkSubjectAddBtn;
+	
+	//Delect option
+	@FindBy(id="showDeleteSubject")
+	public static WebElement clkDelectButton;
+	
+	@FindBy(id="confirmDeleteSubject")
+	public static WebElement clkOKbtn;
+	
+//	//Empty Subject Page
+//	@FindBy(xpath="(//span[text()='Subject Name is required'])[1]")
+//	public static WebElement subjectNameReqired;
+//	
+//	@FindBy(xpath="(//span[text()='Order Id is required'])[1]")
+//	public static WebElement subjectIDReqired;
+	
+}

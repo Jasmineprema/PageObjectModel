@@ -1,0 +1,31 @@
+package thinkwiseAutomation;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+@Test
+public class WaitConcept {
+	
+	public static void login() throws InterruptedException {
+		
+	
+	WebDriver driver = new ChromeDriver();
+	 
+	driver.get("");
+	Thread.sleep(3000);
+	 
+	driver.manage().window().maximize();
+	
+	WebElement clkStaff = driver.findElement(By.xpath("//strong[text()='Staff']"));
+	clkStaff.click();
+	 
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	WebElement loginEmail = driver.findElement(By.id("login-email"));
+	loginEmail.sendKeys("tw-mohan@mailinator.com");
+	
+	}
+}

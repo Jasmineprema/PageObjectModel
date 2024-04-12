@@ -2,4 +2,9 @@
 <section name="Workbench">
 	<section name="ImportExportAction">
 	</section>
+<<<<<<< HEAD
+=======
+	<section name="NewWizardAction">
+	</section>
+>>>>>>> 8d12ec61356600e099ba7ac97ed23f1fe3d79166
 </section>

@@ -1,0 +1,16 @@
+package PageObjects;
+
+public class addClassStudentInfo {
+
+	public static void studentInformation() {
+	public static String classField = "(//span[text()='Class Name is required'])[1]";
+	public static String id ="(//span[text()='Order Id is required'])[1]";
+	public static String section ="(//span[text()='Section is required'])[1]";
+	public static String totalMark = "(//span[text()='Total Mark is required'])[1]";
+//	public static String
+//	public static String
+	
+	
+	
+	}	
+}
