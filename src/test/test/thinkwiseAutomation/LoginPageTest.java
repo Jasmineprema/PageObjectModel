@@ -470,7 +470,7 @@ public class LoginPageTest {
 
 		}
 	}
-@Test(priority = 10)
+    @Test(priority = 10)
 	public static void verifyEmptySectionPage() throws InterruptedException, IOException {
 		PageFactory.initElements(driver, SectionPageObjects.class);
 		Thread.sleep(2000);
@@ -511,11 +511,6 @@ public class LoginPageTest {
 
 		PageFactory.initElements(driver, SectionPageObjects.class);
 
-//		Thread.sleep(5000);
-//		SectionPageObjects.clkSection.click();
-//		Thread.sleep(2000);
-//		SectionPageObjects.showAddSec.click();
-//		Thread.sleep(2000);
 		SectionPageObjects.fillSecField.sendKeys(properties.getProperty("section"));
 		Thread.sleep(3000);
 		SectionPageObjects.fillSecField.clear();
@@ -683,7 +678,7 @@ public class LoginPageTest {
 			e.printStackTrace();
 		}
 
-		// Delect entered data
+		// Delect data entered 
 		SubjectPageObjects.clkDelectButton.click();
 		Thread.sleep(1000);
 		SubjectPageObjects.clkOKbtn.click();
@@ -713,7 +708,7 @@ public class LoginPageTest {
 			e.printStackTrace();
 		}
 	}
-
+	
 	@AfterTest
 	public static void closeBrowser() {
 		extent.flush();
