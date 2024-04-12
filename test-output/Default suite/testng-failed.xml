@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="thinkwiseAutomation.CallTheTestCases">
+      <class name="thinkwiseAutomation.LoginPageTest">
         <methods>
-          <include name="callTheObjects"/>
-          <include name="launchBrowser"/>
           <include name="closeBrowser"/>
+          <include name="verifyEmptySectionPage"/>
+          <include name="launchBrowser"/>
+          <include name="verifySubjectPage"/>
         </methods>
-      </class> <!-- thinkwiseAutomation.CallTheTestCases -->
+      </class> <!-- thinkwiseAutomation.LoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

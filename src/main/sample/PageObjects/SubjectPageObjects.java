@@ -8,7 +8,7 @@ public class SubjectPageObjects {
 	@FindBy(id="subject")
 	public static WebElement clkSubject;
 	
-	@FindBy(id="showAddSubjectInSec")
+	@FindBy(xpath="/html/body/app-root/app-pages/div/app-subject/div[1]/div/div/section/div/div[1]/button")
 	public static WebElement clkAddSubjectInSec;
 	
 	@FindBy(id="addSubjectName")
@@ -17,20 +17,33 @@ public class SubjectPageObjects {
 	@FindBy(id="addSubjectOrder")
 	public static WebElement fillSubOrder;
 	
-	@FindBy(xpath="//span[@class='arrow-down']")
+	@FindBy(xpath="//span[@class='ss-arrow']")
 	public static WebElement clkClasses;
 	
-	@FindBy(xpath="//div[text()='EW ']")
+	@FindBy(xpath="//div[text()='123B ']")
 	public static WebElement clkSection;
 	
 	@FindBy(xpath="//span[@class='ss-plus']")
 	public static WebElement clkSectionBtn;
 	
-	@FindBy(xpath="//div[text()='A']")
+	@FindBy(xpath="//div[text()='12C']")
 	public static WebElement enterSection;
 	
 	@FindBy(id="createSubject")
 	public static WebElement clkSubjectAddBtn;
 	
+	//Delect option
+	@FindBy(id="showDeleteSubject")
+	public static WebElement clkDelectButton;
+	
+	@FindBy(id="confirmDeleteSubject")
+	public static WebElement clkOKbtn;
+	
+//	//Empty Subject Page
+//	@FindBy(xpath="(//span[text()='Subject Name is required'])[1]")
+//	public static WebElement subjectNameReqired;
+//	
+//	@FindBy(xpath="(//span[text()='Order Id is required'])[1]")
+//	public static WebElement subjectIDReqired;
 	
 }

@@ -1,0 +1,295 @@
+package thinkwiseAutomation;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.common.CommonFunctions;
+
+import PageObjects.AcademicsPageObjects;
+import PageObjects.EnterValidDatas;
+import PageObjects.LoginPage;
+import PageObjects.ManageClassPage;
+import PageObjects.SectionPageObjects;
+import PageObjects.SubjectPageObjects;
+
+public class LoginPageTest extends CommonFunctions {
+
+//	public static WebDriver driver;
+	public static ExtentReports extent;
+	public static ExtentSparkReporter reporter;
+
+	public static void setupPage() throws InterruptedException, IOException {
+
+		reporter = new ExtentSparkReporter("./TestReport.html");
+		extent = new ExtentReports();
+		extent.attachReporter(reporter);
+
+	}
+
+	public static void verifyLoginTest() throws InterruptedException, IOException {
+
+		// String username = (String) jsonObject.get("username");
+
+		// Initialize Elements using PageFactory
+
+		PageFactory.initElements(driver, LoginPage.class);
+		Thread.sleep(6000);
+
+		// Click the admin btn
+		LoginPage.adminButton.click();
+		Thread.sleep(6000);
+
+//		jsonObject.get("username");
+		LoginPage.userName.sendKeys(properties.getProperty("userName"));
+		Thread.sleep(3000);
+//    	jsonObject.get("password");
+		LoginPage.password.sendKeys(properties.getProperty("password"));
+//		Thread.sleep(4000);
+		LoginPage.loginBtn.click();
+		Thread.sleep(3000);
+	}
+
+	public static void verifyAcademicsPageObjects() throws InterruptedException {
+
+		// Initialize Elements using PageFactory
+		PageFactory.initElements(driver, AcademicsPageObjects.class);
+
+		Thread.sleep(7000);
+		AcademicsPageObjects.clkAcademics.click();
+		Thread.sleep(2000);
+		AcademicsPageObjects.clkClasses.click();
+		Thread.sleep(5000);
+		AcademicsPageObjects.clkAddBtn.click();
+		Thread.sleep(2000);
+
+	}
+
+	public static void verifyManageClassPage() throws InterruptedException {
+
+		// Initialize Elements using PageFactory
+		PageFactory.initElements(driver, ManageClassPage.class);
+
+		Thread.sleep(3000);
+		ManageClassPage.addClassName.click();
+		Thread.sleep(1000);
+		ManageClassPage.addClassOrder.click();
+		Thread.sleep(1000);
+		ManageClassPage.addSection.click();
+		Thread.sleep(1000);
+		ManageClassPage.addTotalMark.click();
+		Thread.sleep(1000);
+		ManageClassPage.addBtnClk.click();
+		Thread.sleep(3000);
+
+	}
+
+	public static void emptyPage() throws InterruptedException, IOException {
+
+//		String actualMsg = EmptyClassPage.emptyClassName.getText();
+//		assertEquals(actualMsg, "Class Name is required");
+
+		ExtentTest test = extent.createTest("Test Methods",
+				"This is for attaching screentshot to the test at Test level");
+		test.info("Empty page test");
+		test.pass("Empty Classes page was clicked");
+
+		Thread.sleep(2000);
+		WebElement actualMsg = driver.findElement(By.xpath("//h5[text()='Add Class']"));
+
+		try {
+
+			String actualMsg1 = ManageClassPage.actualMsg.getText();
+//			Assert.assertEquals("//i[@class='fa fa-plus'",actualMsg);
+
+			// softAssert
+			SoftAssert assert1 = new SoftAssert();
+			assert1.assertEquals(actualMsg1, "Add Class");
+
+			test.info("Add class Page");
+			test.log(Status.PASS, "Add class page is showing");
+
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			File source = ts.getScreenshotAs(OutputType.FILE);
+			File destination = new File(
+					"C:\\Users\\Jasmine\\eclipse-workspace\\PageObjectModel\\Snaps\\emptypageimg.png");
+			FileUtils.copyFile(source, destination);
+
+			test.addScreenCaptureFromPath("Snaps\\emptypageimg.png");
+
+		} catch (Exception e) {
+
+			test.log(Status.PASS, "Add classpage and actualtext is same" + e.getMessage());
+
+		}
+
+		extent.flush();
+	}
+
+	public static void validData() throws InterruptedException, IOException {
+
+		Thread.sleep(4000);
+		PageFactory.initElements(driver, EnterValidDatas.class);
+
+		Thread.sleep(5000);
+		EnterValidDatas.addValidClassName.sendKeys(properties.getProperty("className"));
+		Thread.sleep(5000);
+		EnterValidDatas.addValidClassOrder.sendKeys(properties.getProperty("orderId"));
+		Thread.sleep(5000);
+		EnterValidDatas.clkPlusBtn.click();
+		Thread.sleep(7000);
+		EnterValidDatas.clkOption.click();
+
+		Thread.sleep(2000);
+		EnterValidDatas.addValidClassTotalMark.sendKeys(properties.getProperty("totalMark"));
+		Thread.sleep(2000);
+		EnterValidDatas.clkAdd.click();
+
+		Thread.sleep(5000);
+
+		ExtentTest classTest = extent.createTest("class page", "This is for valid Test Case at Test Level");
+		classTest.info("Add class valid data entering");
+		classTest.pass("ADD CLASS IS PASSED");
+		Thread.sleep(2000);
+		WebElement actual = driver.findElement(By.xpath("//label[text()=' Class Added Successfully']"));
+		try {
+			SoftAssert assert1 = new SoftAssert();
+			assert1.assertEquals(actual, " Class Added Successfully");
+
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+			File src = screenshot.getScreenshotAs(OutputType.FILE);
+			File dest = new File("C:\\Users\\Jasmine\\eclipse-workspace\\PageObjectModel\\Snaps\\classimg.png");
+			FileUtils.copyFile(src, dest);
+
+			classTest.addScreenCaptureFromPath("Snaps\\classimg.png");
+			System.out.println("Successfully Added");
+
+		} catch (Exception e) {
+
+			classTest.pass("Class added successfully" + e.getMessage());
+
+		}
+
+		extent.flush();
+	}
+
+	public static void verifySectionPage() throws InterruptedException, IOException {
+
+		PageFactory.initElements(driver, SectionPageObjects.class);
+
+		Thread.sleep(5000);
+		SectionPageObjects.clkSection.click();
+
+		Thread.sleep(2000);
+		SectionPageObjects.showAddSec.click();
+
+		Thread.sleep(2000);
+		SectionPageObjects.fillSecField.sendKeys(properties.getProperty("section"));
+
+		Thread.sleep(3000);
+		SectionPageObjects.clkAddBtn.click();
+
+		Thread.sleep(5000);
+		ExtentTest sectionPageTest = extent.createTest("Test Methods",
+				"This is for attaching screentshot to the test at Test level");
+		sectionPageTest.info("Section Page");
+		sectionPageTest.pass("Section Page is Successfully Entered");
+
+		Thread.sleep(4000);
+		WebElement actualMsg = driver.findElement(By.xpath("//label[text()=' Section Added Successfully']"));
+
+		try {
+			SoftAssert assert1 = new SoftAssert();
+			assert1.assertEquals(actualMsg, " Section Added Successfully']");
+
+//			assertEquals(" Section Added " , actualMsg.getText());
+//			test.log(Status.PASS,"Section page Displayed successfully");
+
+			TakesScreenshot screensho = (TakesScreenshot) driver;
+			File src3 = screensho.getScreenshotAs(OutputType.FILE);
+			File dest3 = new File("C:\\Users\\Jasmine\\eclipse-workspace\\PageObjectModel\\Snaps\\sectionimg.png");
+			FileUtils.copyFile(src3, dest3);
+
+			sectionPageTest.addScreenCaptureFromPath("Snaps\\sectionimg.png");
+
+			System.out.println("Successfully Added");
+
+		} catch (Exception e) {
+
+			sectionPageTest.log(Status.FAIL, "Section not added successfully");
+
+		}
+
+		extent.flush();
+		Thread.sleep(5000);
+	}
+
+	public static void verifySubjectPage() throws InterruptedException, IOException {
+
+		PageFactory.initElements(driver, SubjectPageObjects.class);
+
+		SubjectPageObjects.clkSubject.click();
+		Thread.sleep(4000);
+
+		SubjectPageObjects.clkAddSubjectInSec.click();
+		Thread.sleep(2000);
+
+		SubjectPageObjects.fillSubName.sendKeys(properties.getProperty("subjectName"));
+		Thread.sleep(2000);
+
+		SubjectPageObjects.fillSubOrder.sendKeys(properties.getProperty("subjectOrderId"));
+		Thread.sleep(2000);
+
+		SubjectPageObjects.clkClasses.click();
+		Thread.sleep(2000);
+
+		SubjectPageObjects.clkSection.click();
+		Thread.sleep(2000);
+
+		SubjectPageObjects.clkSectionBtn.click();
+		Thread.sleep(2000);
+
+		SubjectPageObjects.enterSection.click();
+		Thread.sleep(2000);
+
+		SubjectPageObjects.clkSubjectAddBtn.click();
+		Thread.sleep(4000);
+
+		ExtentTest subjectPage = extent.createTest("This is Subject page");
+
+		subjectPage.info("Subject Page");
+		subjectPage.pass("Subject page clicked Successfully");
+
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		File src3 = screenshot.getScreenshotAs(OutputType.FILE);
+		File dest3 = new File("C:\\Users\\Jasmine\\eclipse-workspace\\PageObjectModel\\Snaps\\subjectimg.png");
+		FileUtils.copyFile(src3, dest3);
+		subjectPage.addScreenCaptureFromPath("Snaps\\subjectimg.png");
+
+		WebElement subject = driver.findElement(By.xpath("//strong[text()='Success!']"));
+
+		try {
+			SoftAssert assertt = new SoftAssert();
+			assertt.assertEquals("Success!", subject);
+			subjectPage.log(Status.PASS, "New Subject details added successfully");
+
+		} catch (Exception e) {
+
+			subjectPage.log(Status.FAIL, "Add subject details is Failed");
+		}
+
+		extent.flush();
+	}
+
+}

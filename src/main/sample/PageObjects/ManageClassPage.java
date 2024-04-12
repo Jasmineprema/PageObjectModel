@@ -20,8 +20,4 @@ public class ManageClassPage {
 	@FindBy(id="createClass")
 	public static WebElement addBtnClk;
 	
-	@FindBy(xpath="//h5[text()='Add Class']")
-	public static WebElement actualMsg;
-	
-
 }
